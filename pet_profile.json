@@ -1,0 +1,23 @@
+{
+  "species": "Rabbit",
+  "breed": "Netherland Dwarf",
+  "name": "Kuro",
+  "gender": "Male",
+  "age": "3",
+
+  "color": "Black",
+  "fur_length": "Short",
+  "ear": "Upright",
+  "tail": "Short",
+  "pattern": "Solid",
+
+  "memo": "glossy jet-black coat with subtle white roots, gentle and intelligent eyes with a warm brown tint, calm and quiet elegance",
+
+  "magic_word": "I love you",
+  "magic_action_free": "Kuro gently lowers his head and tenderly licks my hand with quiet affection, his intelligent eyes filled with warmth and trust.",
+
+  "color_free": "each hair is white at the base and black at the tip, creating a soft shimmering texture under diffused light",
+  "ear_free": "inner ears have a warm brown hue that contrasts beautifully with his dark coat",
+  "tail_free": "short tail with subtle gray undertones visible in soft lighting",
+  "pattern_free": ""
+}
