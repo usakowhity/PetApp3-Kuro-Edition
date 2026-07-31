@@ -57,6 +57,8 @@ STATE_ALIAS_EN = {
     "bath": "p11",
     "groom": "p11",
     "brush": "p11",
+    "clean": "p11",
+    "wash": "p11",
 
     # Special affection state (p12)
     "i love you": "p12",
@@ -65,10 +67,12 @@ STATE_ALIAS_EN = {
     "i missed you": "p12",
 }
 
-# Name-call aliases for Kuro (Whisper mis-recognition対応)
+# ---------------------------------------------------------
+# Name-call aliases for Kuro (Whisper mis-recognition 対応)
+# ---------------------------------------------------------
 NAME_CALL_WORDS = [
-    "kuro",     # original
-    "curo",     # most stable
+    "kuro",
+    "curo",
     "kuroh",
     "kulo",
 
@@ -81,3 +85,23 @@ NAME_CALL_WORDS = [
     "group",
     "good"
 ]
+
+# ---------------------------------------------------------
+# Whisper mis-recognition aliases for fetch / bath / toilet
+# ---------------------------------------------------------
+
+# fetch → Whisper 誤認識: "fritch", "fritz"
+STATE_ALIAS_EN["fritch"] = "p8"
+STATE_ALIAS_EN["fritz"] = "p8"
+
+# toilet → Whisper 誤認識: "shit", "short"
+STATE_ALIAS_EN["shit"] = "p7"
+STATE_ALIAS_EN["short"] = "p7"
+
+# bath → Whisper 誤認識（ログより）
+# Whisper は bath をほぼ認識できず、以下の単語に化ける
+for w in [
+    "buss", "bugs", "buf", "bush", "best", "bit",
+    "poof", "plus", "thus", "pros"
+]:
+    STATE_ALIAS_EN[w] = "p11"
