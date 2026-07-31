@@ -16,7 +16,7 @@ from data.breeds_en import (
 
 # State metadata
 from data.states_en import STATE_META_EN, STATE_LIST
-from data.states_alias_en import STATE_ALIAS_EN
+from data.states_alias_en import STATE_ALIAS_EN, NAME_CALL_WORDS
 
 
 class Controller(QObject):
@@ -151,7 +151,7 @@ class Controller(QObject):
 
     def show_stepEditMenu(self):
         from ui.step_edit_menu_en import StepEditMenu
-        self.win = StepEditMenu(self)
+        self.win = StepEditEditMenu(self)
         self.win.show()
         print("[Controller] StepEditMenu started")
 
@@ -208,7 +208,29 @@ class Controller(QObject):
             print("[Controller] WhisperListener start error:", e)
 
     def on_voice_detected(self, text):
+        """
+        Whisper recognized text → state mapping
+        Includes:
+        - lower() normalization
+        - partial match for name-call (startswith)
+        """
+
         text = text.lower().strip()
+        words = text.split()
+
+        # -----------------------------
+        # 1. Name-call detection (partial match)
+        # -----------------------------
+        for w in words:
+            w = w.lower()
+            if any(w.startswith(n) for n in NAME_CALL_WORDS):
+                print("[Controller] Name-call detected → p2")
+                self.voice_signal.emit("p2")
+                return
+
+        # -----------------------------
+        # 2. State alias mapping
+        # -----------------------------
         for key, state in STATE_ALIAS_EN.items():
             if key in text:
                 self.voice_signal.emit(state)
@@ -345,3 +367,4 @@ if __name__ == "__main__":
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     c = Controller(BASE_DIR)
     c.show_welcome()
+

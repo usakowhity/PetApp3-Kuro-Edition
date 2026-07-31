@@ -1,5 +1,5 @@
 # states_alias_en.py
-# English voice command → state mapping for PetApp3 Taro
+# English voice command → state mapping for PetApp3 Kuro Edition
 
 STATE_ALIAS_EN = {
     # Neutral states
@@ -59,9 +59,25 @@ STATE_ALIAS_EN = {
     "brush": "p11",
 
     # Special affection state (p12)
-    # The actual affection word is dynamic, but we include common patterns
     "i love you": "p12",
     "love you": "p12",
     "miss you": "p12",
     "i missed you": "p12",
 }
+
+# Name-call aliases for Kuro (Whisper mis-recognition対応)
+NAME_CALL_WORDS = [
+    "kuro",     # original
+    "curo",     # most stable
+    "kuroh",
+    "kulo",
+
+    # Whisper mis-recognized variants
+    "kudo",
+    "kno",
+    "clue",
+    "cool",
+    "cloth",
+    "group",
+    "good"
+]
