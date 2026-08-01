@@ -151,7 +151,7 @@ class Controller(QObject):
 
     def show_stepEditMenu(self):
         from ui.step_edit_menu_en import StepEditMenu
-        self.win = StepEditEditMenu(self)
+        self.win = StepEditMenu(self)
         self.win.show()
         print("[Controller] StepEditMenu started")
 
